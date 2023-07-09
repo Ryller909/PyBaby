@@ -42,6 +42,7 @@ def adicionarAcessorio():
     
     id = int(input("Digite o código do acessório: "))
     nome = input("Nome do acessório: ")
+    marca = input("Digite a marca do acessório: ")
     idade = int(input("Faixa etaria: "))
     valor = float(input("Valor do acessórios: "))
     tipo = input("Tipo do acessório: ")
@@ -49,11 +50,17 @@ def adicionarAcessorio():
     acessorio = {
         'id' : id,
         'nome': nome,
-        'iadade': idade,
+        'marca': marca,
+        'idade': idade,
         'valor': valor,
         'tipo': tipo
     }
-    acessorios.append(acessorio)
+    
+    #acessorios.append(acessorio)
+
+    
+    with open("dados.dat", "a") as arquivo:
+        arquivo.write(f"{acessorio['id']},{acessorio['nome']},{acessorio['marca']},{acessorio['idade']},{acessorio['valor']},{acessorio['tipo']}\n")
 
     print("Acessório adicionado com sucesso!!")
 

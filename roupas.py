@@ -56,7 +56,12 @@ def adicionarRoupa():
         'tipo': tipo,
         'tamanho': tamanho
     }
-    roupas.append(roupa)
+    
+    #roupas.append(roupa)
+
+    
+    with open("dados.dat", "a") as arquivo:
+        arquivo.write(f"{roupa['id']},{roupa['marca']},{roupa['idade']},{roupa['valor']},{roupa['tipo']},{roupa['tamanho']}\n")
 
     print("Roupa adicionada com sucesso!! ")
 

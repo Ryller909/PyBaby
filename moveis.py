@@ -57,7 +57,7 @@ def adicionarMoveis():
     
     id = int(input("Digite o codigo do móvel: "))
     marca = input("Marca do móvel: ")
-    valor = float(input("Valor do móvel: "))
+    valor = float(input("Preço do móvel: "))
     tipo = input("Tipo do móvel: ")
     material = input("Matérial do móvel: ")
 
@@ -68,7 +68,12 @@ def adicionarMoveis():
         'tipo': tipo,
         'material': material
     }
-    moveis.append(movel)
+    
+    #moveis.append(movel)
+
+    
+    with open("dados.dat", "a") as arquivo:
+        arquivo.write(f"{movel['id']},{movel['marca']},{movel['valor']},{movel['tipo']},{movel['material']}\n")
 
     print("Móvel adicionado com sucesso: ")
 
