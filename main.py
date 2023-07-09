@@ -1,4 +1,5 @@
 import os 
+import funcionarios
 import acessorios
 import roupas
 import moveis
@@ -25,7 +26,7 @@ def menuPrincipal():
     #print('\t2 - Fraldas')
     print('\t2 - Roupas')
     print('\t3 - Móveis')
-    #print('\t5 - Relatórios')
+    print('\t4 - Funcionários')
     #print('\t0 - Finalizar programa')
     
     print()
@@ -37,12 +38,19 @@ def menuPrincipal():
 
 esc = menuPrincipal()
 while esc != '0':
+
     if esc == '1':
         acessorios.moduloAcessorios()
+
     elif esc == '2':
         roupas.moduloRoupas()
+
     elif esc == '3':
         moveis.moduloMoveis()
+
+    elif esc == '4':
+        funcionarios.moduloFuncionarios()
+
     else:
         print("Digite uma opção válida: ")
 

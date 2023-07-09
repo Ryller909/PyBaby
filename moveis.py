@@ -1,6 +1,25 @@
 import os 
+import pickle
+
 
 #Tela de escolha de móveis
+
+moveis = {}
+
+try:
+    arqMoveis =  open("moveis.dat", "rb")
+    moveis = pickle.load(arqMoveis)
+    arqMoveis.close()
+except:
+    arqMoveis = open("moveis.dat", "wb")
+    arqMoveis.close()
+
+def atualizarArquivo():
+    arqMoveis = open("moveis.dat", "wb")
+    pickle.dump(moveis,arqMoveis)
+    arqMoveis.close()
+
+
 
 a1 = "="*40
 a2 = "="*15
@@ -14,10 +33,11 @@ def moveis():
     print(a1)
     print()
 
-    print('\t1 - Berço')
-    print('\t2 - Comoda')
-    print('\t3 - Cadeira')
-    print('\t4 - Redinha')
+    print('Escolha o que deseja fazer: ')
+    print('\t1 - Adicicionar móvel')
+    print('\t2 - Remover móvel')
+    print('\t3 - Ver estoque de móveis')
+    #print('\t4 - Redinha')
     #print('\t4 - ')
     #print('\t5 - ')
 
@@ -31,40 +51,77 @@ esc = moveis()
 
 
 
-while esc != '0':
-    if esc == '1':
-
-        arq = open('compras.txt', 'w')
-        arq.write('Berço')
-        
-        arq.close()
-
-    elif esc == '2':
-
-        arq = open('compras.txt', 'w')
-        arq.write('comoda')
-        
-        arq.close()
+def adicionarMoveis():
     
-    elif esc == '3':
+    moveis = []
+    
+    id = int(input("Digite o codigo do móvel: "))
+    marca = input("Marca do móvel: ")
+    valor = float(input("Valor do móvel: "))
+    tipo = input("Tipo do móvel: ")
+    material = input("Matérial do móvel: ")
 
-        arq = open('compras.txt', 'w')
-        arq.write('cadeira')
+    movel = {
+        'id': id,
+        'marca': marca,
+        'valor': valor,
+        'tipo': tipo,
+        'material': material
+    }
+    moveis.append(movel)
+
+    print("Móvel adicionado com sucesso: ")
+
+
+def removerMoveis():
+
+    id = input("Digite o código do funcionário que deseja remover: ")
+
+    for movel in moveis:
+        if movel["id"] == id:
+            moveis.remove(movel)
+            print("Móvel removido!!")
+            return
+    print("Móvel não encontrado!!")
+
+removerMoveis(moveis)
+
+
+
+# while esc != '0':
+#     if esc == '1':
+
+#         arq = open('compras.dat', 'w')
+#         arq.write('Berço')
         
-        arq.close()
-    
-    elif esc == '4':
+#         arq.close()
 
-        arq = open('compras.txt', 'w')
-        arq.write('redinha')
+#     elif esc == '2':
+
+#         arq = open('compras.dat', 'w')
+#         arq.write('comoda')
         
-        arq.close()
+#         arq.close()
+    
+#     elif esc == '3':
+
+#         arq = open('compras.dat', 'w')
+#         arq.write('cadeira')
+        
+#         arq.close()
+    
+#     elif esc == '4':
+
+#         arq = open('compras.dat', 'w')
+#         arq.write('redinha')
+        
+#         arq.close()
 
 
-    else:
+#     else:
     
-        print("Digite uma opcção válida: ")
+#         print("Digite uma opcção válida: ")
     
-    print()
-    esc = moveis()
-    print()
+#     print()
+#     esc = moveis()
+#     print()

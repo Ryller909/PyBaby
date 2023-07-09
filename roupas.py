@@ -15,12 +15,17 @@ def roupas():
     print(a1)
     print()
 
-    print('\t1 - Calções')
-    print('\t2 - Camisas')
-    print('\t3 - Fraldas de pano')
-    print('\t4 - Luvas')
-    print('\t5 - Meias')
-    print('\t6 - Toucas')
+    print('Escolha o que deseja fazer: ')
+    print('\t1 - Adicionar roupa')
+    print('\t2 - Remover roupa')
+    print('\t3 - Ver estoque de roupas')
+
+    # print('\t1 - Calções')
+    # print('\t2 - Camisas')
+    # print('\t3 - Fraldas de pano')
+    # print('\t4 - Luvas')
+    # print('\t5 - Meias')
+    # print('\t6 - Toucas')
 
     print()
     print(a1)
@@ -29,3 +34,42 @@ def roupas():
     return esc
 
 esc = roupas()
+
+
+
+def adicionarRoupa():
+    
+    roupas = []
+    
+    id = int(input("Digite  código da roupa: "))
+    marca = input("Marca da roupa: ")
+    idade = int(input("Faixa etaria: "))
+    valor = float(input("Valor da roupa: "))
+    tipo = input("Tipo da roupa: ")
+    tamanho = input("Tamanho da roupa: ")
+
+    roupa = {
+        'id': id,
+        'marca': marca,
+        'iadade': idade,
+        'valor': valor,
+        'tipo': tipo,
+        'tamanho': tamanho
+    }
+    roupas.append(roupa)
+
+    print("Roupa adicionada com sucesso!! ")
+
+
+def removerRoupas():
+
+    id = input("Digite o código da roupa que deseja remover: ")
+
+    for roupa in roupas:
+        if roupa["id"] == id:
+            roupas.remove(roupa)
+            print("Roupa removido!!")
+            return
+    print("Roupa não encontrado!!")
+
+removerRoupas(roupas)
